@@ -15,7 +15,11 @@ public class BordVakje implements Vakje {
 
 	@Override
 	public void markeer() {
-		toestand = VeldToestandEnum.gemarkeerd;
+		if (toestand == VeldToestandEnum.start) {
+			toestand = VeldToestandEnum.gemarkeerd;
+		} else {
+			toestand = VeldToestandEnum.start;
+		}
 
 	}
 

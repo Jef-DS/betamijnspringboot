@@ -36,6 +36,13 @@ public class BetamijnenvegerApplicationTests {
 		vakje.markeer();
 		assertEquals(VeldToestandEnum.gemarkeerd, vakje.getToestand());
 	}
+	@Test
+	public void testOnmarkeerVakje() {
+		Vakje vakje = Vakje.MaakVakje(null, false);
+		vakje.markeer();
+		vakje.markeer();
+		assertEquals(VeldToestandEnum.start, vakje.getToestand());
+	}
 
 
 }
