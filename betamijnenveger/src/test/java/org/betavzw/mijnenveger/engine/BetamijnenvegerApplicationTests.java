@@ -109,5 +109,18 @@ public class BetamijnenvegerApplicationTests {
 		assertEquals(aantalrijen, bord.getAantalRijen());
 		assertEquals(aantalkolommen, bord.getAantalKolommen());
 	}
+	@Test
+	public void testBordJuisteBommen() {
+		int aantalRijen = 3;
+		int aantalKolommen = 3;
+		Set<Positie> posities = Set.of(
+				new Positie(0, 1)
+				);
+		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
+		Bord bord = new BordImpl(generator);
+		bord.klikVakje(0, 1);
+		VeldToestandEnum toestand = bord.getVeldToestand(0, 1);
+		assertEquals(VeldToestandEnum.mijn, toestand);
+	}
 }
 
