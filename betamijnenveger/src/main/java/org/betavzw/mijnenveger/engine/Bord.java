@@ -1,5 +1,7 @@
 package org.betavzw.mijnenveger.engine;
 
+import java.util.Collection;
+
 public interface Bord {
 	void klikVakje(int rij, int kolom);
 	void markeerVakje(int rij, int kolom);
@@ -7,5 +9,5 @@ public interface Bord {
 	BordToestandEnum getToestand();
 	int getAantalRijen();
 	int getAantalKolommen();
-	Iterable<Vakje> getBuren(int rij, int kolom);
+	Collection<Vakje> getBuren(int rij, int kolom);
 }

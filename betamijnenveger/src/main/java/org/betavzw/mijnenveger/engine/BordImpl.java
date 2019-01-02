@@ -1,5 +1,6 @@
 package org.betavzw.mijnenveger.engine;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,12 @@ public class BordImpl implements Bord {
 				vakjes[rij][kolom] = Vakje.MaakVakje(this, generator.isBom(rij, kolom));
 			}
 		}
+		for(int rij=0;rij < getAantalRijen();rij++) {
+			for(int kolom=0;kolom<getAantalKolommen();kolom++) {
+				vakjes[rij][kolom].setBuren(getBuren(rij, kolom));
+			}
+		}
+		
 	}
 	@Override
 	public void klikVakje(int rij, int kolom) {
@@ -43,11 +50,11 @@ public class BordImpl implements Bord {
 		return vakjes[0].length;
 	}
 	@Override
-	public Iterable<Vakje> getBuren(int rij, int kolom) {
+	public Collection<Vakje> getBuren(int rij, int kolom) {
 		int minRij = Math.max(0, rij - 1);
 		int maxRij = Math.min(rij + 2, getAantalRijen());
 		int minKolom = Math.max(0, kolom -1);
-		int maxKolom = Math.min(kolom + 1, getAantalKolommen());
+		int maxKolom = Math.min(kolom + 2, getAantalKolommen());
 		Set<Vakje> v = new HashSet<>();
 		for(int r=minRij;r<maxRij;r++) {
 			for(int k=minKolom;k<maxKolom;k++) {

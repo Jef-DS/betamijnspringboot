@@ -29,7 +29,8 @@ public class VasteVeldGenerator implements VeldGenerator {
 		if (rij < 0) throw new IllegalArgumentException(String.format("Rij %d kleiner dan 0", rij));
 		if (kolom < 0) throw new IllegalArgumentException(String.format("Kolom %d kleiner dan 0", kolom));
 		Positie p = new Positie(rij, kolom);
-		return this.bomposities.contains(p);
+		boolean bevatPositie = this.bomposities.contains(p);
+		return bevatPositie;
 	}
 
 }

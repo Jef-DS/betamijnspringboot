@@ -9,9 +9,11 @@ public interface Vakje {
 	void toon();
 	void setBuren(Collection<Vakje> buren);
 	static Vakje MaakVakje(Bord speelbord, boolean heeftMijn) {
+		Vakje v;
 		if (!heeftMijn)
-			return new BordVakje();
+			v= new BordVakje();
 		else
-			return new BomVakje();
+			v= new BomVakje();
+		return v;
 	}
 }

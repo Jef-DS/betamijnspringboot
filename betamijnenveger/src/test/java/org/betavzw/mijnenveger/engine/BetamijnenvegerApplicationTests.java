@@ -178,18 +178,18 @@ public class BetamijnenvegerApplicationTests {
 		VeldToestandEnum toestand = bord.getVeldToestand(0, 1);
 		assertEquals(VeldToestandEnum.mijn, toestand);
 	}
-//	@Test
-//	public void testBordJuisteBuren() {
-//		int aantalRijen = 3;
-//		int aantalKolommen = 3;
-//		Set<Positie> posities = Set.of(
-//				new Positie(0, 1), new Positie(1,1), new Positie(1,0)
-//				);
-//		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
-//		Bord bord = new BordImpl(generator);
-//		bord.klikVakje(0, 0);
-//		VeldToestandEnum toestand = bord.getVeldToestand(0, 0);
-//		assertEquals(VeldToestandEnum.drieburen, toestand);
-//	}
+	@Test
+	public void testBordJuisteBuren() {
+		int aantalRijen = 3;
+		int aantalKolommen = 3;
+		Set<Positie> posities = Set.of(
+				new Positie(0, 1), new Positie(1,1), new Positie(1,0)
+				);
+		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
+		Bord bord = new BordImpl(generator);
+		bord.klikVakje(0, 0);
+		VeldToestandEnum toestand = bord.getVeldToestand(0, 0);
+		assertEquals(VeldToestandEnum.drieburen, toestand);
+	}
 }
 
