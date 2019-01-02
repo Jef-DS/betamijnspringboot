@@ -26,9 +26,10 @@ public class VasteVeldGenerator implements VeldGenerator {
 	public boolean isBom(int rij, int kolom) throws IllegalArgumentException {
 		if (rij >= getAantalRijen()) throw new IllegalArgumentException(String.format("Rij %d is groter dan %d", rij, getAantalRijen()));
 		if (kolom >= getAantalKolommen()) throw new IllegalArgumentException(String.format("Kolom %d is groter dan %d", kolom, getAantalKolommen()));
-		if (rij < 0) throw new IllegalArgumentException("rij kleiner dan 0");
-		if (kolom < 0) throw new IllegalArgumentException("kolom kleiner dan 0");
-		return false;
+		if (rij < 0) throw new IllegalArgumentException(String.format("Rij %d kleiner dan 0", rij));
+		if (kolom < 0) throw new IllegalArgumentException(String.format("Kolom %d kleiner dan 0", kolom));
+		Positie p = new Positie(rij, kolom);
+		return this.bomposities.contains(p);
 	}
 
 }

@@ -71,6 +71,18 @@ public class BetamijnenvegerApplicationTests {
 		expectedEx.expectMessage("Kolom 2 is groter dan 2");
 		generator.isBom(1, 2);
 	}
-
+	@Test
+	public void testVeldGeneratorBevatBom() {
+		int aantalrijen = 2;
+		int aantalkolommen = 2;
+		Set<Positie> posities = Set.of(
+			new Positie(0, 0)
+		);
+		VeldGenerator generator = new VasteVeldGenerator(aantalrijen, aantalkolommen, posities);
+		boolean isBom = generator.isBom(0, 0);
+		assertTrue("test op bevat bom mislukt", isBom);
+		boolean isGeenBom = generator.isBom(1, 1);
+		assertFalse("test op bevat geen bom mislukt", isGeenBom);
+	}
 }
 
