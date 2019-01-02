@@ -58,6 +58,13 @@ public class BetamijnenvegerApplicationTests {
 		assertEquals(VeldToestandEnum.mijn, vakje.getToestand());
 	}
 	@Test
+	public void testBomVakjeNietGemarkeerdKlik() {
+		Vakje vakje = Vakje.MaakVakje(null, true);
+		vakje.markeer();
+		expectedEx.expect(IllegalArgumentException.class);
+		vakje.klik();
+	}
+	@Test
 	public void testVeldGeneratorTeGroteRij() {
 		int aantalrijen = 2;
 		int aantalkolommen = 2;
