@@ -1,5 +1,8 @@
 package org.betavzw.mijnenveger.engine;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BordImpl implements Bord {
 	private Vakje[][] vakjes;
 	public BordImpl(VeldGenerator generator) {
@@ -38,6 +41,21 @@ public class BordImpl implements Bord {
 	@Override
 	public int getAantalKolommen() {
 		return vakjes[0].length;
+	}
+	@Override
+	public Iterable<Vakje> getBuren(int rij, int kolom) {
+		int minRij = Math.max(0, rij - 1);
+		int maxRij = Math.min(rij + 2, getAantalRijen());
+		int minKolom = Math.max(0, kolom -1);
+		int maxKolom = Math.min(kolom + 1, getAantalKolommen());
+		Set<Vakje> v = new HashSet<>();
+		for(int r=minRij;r<maxRij;r++) {
+			for(int k=minKolom;k<maxKolom;k++) {
+				if (r == rij && k == kolom) continue;
+				v.add(vakjes[r][k]);
+			}
+		}
+		return v;
 	}
 
 }

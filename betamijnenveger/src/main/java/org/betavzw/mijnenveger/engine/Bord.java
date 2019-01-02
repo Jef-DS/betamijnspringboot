@@ -7,4 +7,5 @@ public interface Bord {
 	BordToestandEnum getToestand();
 	int getAantalRijen();
 	int getAantalKolommen();
+	Iterable<Vakje> getBuren(int rij, int kolom);
 }

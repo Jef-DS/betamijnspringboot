@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Rule;
@@ -60,6 +61,26 @@ public class BetamijnenvegerApplicationTests {
 	@Test
 	public void testBomVakjeNietGemarkeerdKlik() {
 		Vakje vakje = Vakje.MaakVakje(null, true);
+		vakje.markeer();
+		expectedEx.expect(IllegalArgumentException.class);
+		vakje.klik();
+	}
+	@Test
+	public void testAantalBomBuren() {
+		Vakje vakje = new BordVakje();
+		vakje.setBuren(List.of(
+				     new BordVakje(),
+				     new BomVakje(),
+				     new BordVakje(),
+				     new BomVakje(),
+				     new BomVakje()
+				));
+		vakje.klik();
+		assertEquals(VeldToestandEnum.drieburen, vakje.getToestand());
+	}
+	@Test
+	public void testGeenKlikBijMarkeren() {
+		Vakje vakje = new BordVakje();
 		vakje.markeer();
 		expectedEx.expect(IllegalArgumentException.class);
 		vakje.klik();
@@ -122,5 +143,18 @@ public class BetamijnenvegerApplicationTests {
 		VeldToestandEnum toestand = bord.getVeldToestand(0, 1);
 		assertEquals(VeldToestandEnum.mijn, toestand);
 	}
+//	@Test
+//	public void testBordJuisteBuren() {
+//		int aantalRijen = 3;
+//		int aantalKolommen = 3;
+//		Set<Positie> posities = Set.of(
+//				new Positie(0, 1), new Positie(1,1), new Positie(1,0)
+//				);
+//		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
+//		Bord bord = new BordImpl(generator);
+//		bord.klikVakje(0, 0);
+//		VeldToestandEnum toestand = bord.getVeldToestand(0, 0);
+//		assertEquals(VeldToestandEnum.drieburen, toestand);
+//	}
 }
 

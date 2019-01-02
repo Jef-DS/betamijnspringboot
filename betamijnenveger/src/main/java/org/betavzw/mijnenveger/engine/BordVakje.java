@@ -1,7 +1,12 @@
 package org.betavzw.mijnenveger.engine;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 public class BordVakje implements Vakje {
 	private VeldToestandEnum toestand = VeldToestandEnum.start;
+	private int aantalBomBuren;
 	@Override
 	public VeldToestandEnum getToestand() {
 		return toestand;
@@ -11,7 +16,8 @@ public class BordVakje implements Vakje {
 	}
 	@Override
 	public boolean klik() {
-		// TODO Auto-generated method stub
+		if (getToestand() != VeldToestandEnum.start) throw new IllegalArgumentException("Toestand is " + getToestand());
+		setToestand(VeldToestandEnum.values()[2+aantalBomBuren]);
 		return false;
 	}
 
@@ -29,6 +35,14 @@ public class BordVakje implements Vakje {
 	public void toon() {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public void setBuren(Collection<Vakje> buren) {
+		aantalBomBuren = 0;
+		for(Vakje v: buren) {
+			if (v.getClass().equals(BomVakje.class)) aantalBomBuren++;
+		}
+		
 	}
 
 }
