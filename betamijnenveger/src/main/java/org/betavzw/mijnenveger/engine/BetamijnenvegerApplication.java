@@ -19,7 +19,6 @@ public class BetamijnenvegerApplication implements CommandLineRunner {
 
 	private Bord bord;
 
-	
 	public BetamijnenvegerApplication(Bord bord) {
 		this.bord = bord;
 	}
@@ -29,16 +28,22 @@ public class BetamijnenvegerApplication implements CommandLineRunner {
 		Scanner scanner = new Scanner(System.in);
 		while (bord.getToestand() == BordToestandEnum.gestart) {
 			toonBord();
+			System.out.print("Geef muisknop: ");
+			String muisknop = scanner.nextLine();
 			System.out.print("Geef rij: ");
 			int rij = Integer.parseInt(scanner.nextLine());
 			System.out.print("Geef kolom: ");
 			int kolom = Integer.parseInt(scanner.nextLine());
-			bord.klikVakje(rij, kolom);
+			if (muisknop.equalsIgnoreCase("r")) {
+				bord.markeerVakje(rij, kolom);
+			} else {
+				bord.klikVakje(rij, kolom);
+			}
 		}
 		toonBord();
 		if (bord.getToestand() == BordToestandEnum.gewonnen) {
 			System.out.println("GEWONNEN");
-		}else {
+		} else {
 			System.out.println("VERLOREN");
 		}
 
