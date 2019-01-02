@@ -84,5 +84,17 @@ public class BetamijnenvegerApplicationTests {
 		boolean isGeenBom = generator.isBom(1, 1);
 		assertFalse("test op bevat geen bom mislukt", isGeenBom);
 	}
+	@Test
+	public void testBordMetRijenEnKolommen() {
+		int aantalrijen = 3;
+		int aantalkolommen = 3;
+		Set<Positie> posities = Set.of(
+				new Positie(0, 0)
+			);
+		VeldGenerator generator = new VasteVeldGenerator(aantalrijen, aantalkolommen, posities);
+		Bord bord = new BordImpl(generator);
+		assertEquals(aantalrijen, bord.getAantalRijen());
+		assertEquals(aantalkolommen, bord.getAantalKolommen());
+	}
 }
 
