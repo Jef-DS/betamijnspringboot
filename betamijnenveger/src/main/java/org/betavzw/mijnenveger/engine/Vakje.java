@@ -6,6 +6,9 @@ public interface Vakje {
 	void markeer();
 	void toon();
 	static Vakje MaakVakje(Bord speelbord, boolean heeftMijn) {
-		return new BordVakje();
+		if (!heeftMijn)
+			return new BordVakje();
+		else
+			return new BomVakje();
 	}
 }

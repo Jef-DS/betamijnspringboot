@@ -1,6 +1,8 @@
 package org.betavzw.mijnenveger.engine;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +17,13 @@ public class BetamijnenvegerApplicationTests {
 	public void testMaakGewoonVakje() {
 		Vakje  vakje = Vakje.MaakVakje(null, false);
 		boolean ontploft = vakje.klik();
-		assertEquals(false, ontploft);
+		assertFalse(ontploft);
+	}
+	@Test
+	public void testMaakBomVakje() {
+		Vakje vakje = Vakje.MaakVakje(null, true);
+		boolean ontploft = vakje.klik();
+		assertTrue(ontploft);
 	}
 
 }
