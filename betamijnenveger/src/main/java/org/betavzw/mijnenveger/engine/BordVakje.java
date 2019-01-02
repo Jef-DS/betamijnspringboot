@@ -6,7 +6,8 @@ import java.util.Set;
 
 public class BordVakje implements Vakje {
 	private VeldToestandEnum toestand = VeldToestandEnum.start;
-	private int aantalBomBuren;
+	private Set<Vakje> buren = new HashSet<Vakje>();
+
 	@Override
 	public VeldToestandEnum getToestand() {
 		return toestand;
@@ -18,6 +19,13 @@ public class BordVakje implements Vakje {
 	public boolean klik() {
 		if (getToestand() != VeldToestandEnum.start) throw new IllegalArgumentException("Toestand is " + getToestand());
 		toon();
+		if (getAantalBomBuren() == 0) {
+		for(Vakje v: buren) {
+			if (v.getToestand() == VeldToestandEnum.start) {
+				v.klik();
+			}
+		}
+		}
 		return false;
 	}
 
@@ -33,16 +41,16 @@ public class BordVakje implements Vakje {
 
 	@Override
 	public void toon() {
-		setToestand(VeldToestandEnum.values()[2+aantalBomBuren]);
+		setToestand(VeldToestandEnum.values()[2+getAantalBomBuren()]);
 
 	}
 	@Override
 	public void setBuren(Collection<Vakje> buren) {
-		aantalBomBuren = 0;
-		for(Vakje v: buren) {
-			if (v.getClass().equals(BomVakje.class)) aantalBomBuren++;
-		}
+		this.buren.addAll(buren);
 		
+	}
+	private int getAantalBomBuren() {
+		return (int) this.buren.stream().filter(v -> v.getClass().equals(BomVakje.class)).count();
 	}
 
 }
