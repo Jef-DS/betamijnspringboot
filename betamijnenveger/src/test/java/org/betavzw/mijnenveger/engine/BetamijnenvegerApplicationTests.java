@@ -215,5 +215,31 @@ public class BetamijnenvegerApplicationTests {
 		bord.klikVakje(1, 1);
 		assertEquals(BordToestandEnum.verloren, bord.getToestand());
 	}
+	@Test
+	public void testBordTonenNaVerloren() {
+		int aantalRijen = 3;
+		int aantalKolommen = 3;
+		Set<Positie> posities = Set.of(
+				new Positie(0, 1), new Positie(1,1), new Positie(1,0)
+				);
+		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
+		Bord bord = new BordImpl(generator);	
+		bord.klikVakje(1, 1);
+		assertEquals(VeldToestandEnum.mijn, bord.getVeldToestand(0,1));
+		assertEquals(VeldToestandEnum.drieburen, bord.getVeldToestand(0, 0));
+	}
+	@Test
+	public void testBordGewonnen() {
+		int aantalRijen = 3;
+		int aantalKolommen = 3;
+		Set<Positie> posities = Set.of(
+				new Positie(0, 2), new Positie(1,2)
+				);
+		VeldGenerator generator = new VasteVeldGenerator(aantalRijen, aantalKolommen, posities);
+		Bord bord = new BordImpl(generator);	
+		bord.klikVakje(0, 0);
+		bord.klikVakje(2, 2);
+		assertEquals(BordToestandEnum.gewonnen, bord.getToestand());
+	}
 }
 

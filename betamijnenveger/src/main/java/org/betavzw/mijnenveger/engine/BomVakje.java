@@ -11,4 +11,8 @@ public class BomVakje extends BordVakje {
 	public void toon() {
 		setToestand(VeldToestandEnum.mijn);
 	}
+	@Override
+	public boolean isBom() {
+		return true;
+	}
 }

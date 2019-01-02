@@ -28,6 +28,10 @@ public class BordImpl implements Bord {
 		if (vakjes[rij][kolom].getToestand() == VeldToestandEnum.start) {
 			if (vakjes[rij][kolom].klik()) {
 				toestand = BordToestandEnum.verloren;
+				toonBord();
+			}else if (isGewonnen()) {
+				toestand = BordToestandEnum.gewonnen;
+				toonBord();
 			}
 		}
 
@@ -78,5 +82,23 @@ public class BordImpl implements Bord {
 		}
 		return v;
 	}
-
+	private void toonBord() {
+		for(int rij = 0; rij < getAantalRijen();rij++) {
+			for(int kolom = 0; kolom <getAantalKolommen();kolom++) {
+				vakjes[rij][kolom].toon();
+			}
+		}
+	}
+	private boolean isGewonnen() {
+		for(int rij = 0; rij < getAantalRijen();rij++) {
+			for(int kolom=0; kolom < getAantalKolommen();kolom++) {
+				if ((vakjes[rij][kolom].getToestand() == VeldToestandEnum.start ||
+						vakjes[rij][kolom].getToestand() == VeldToestandEnum.gemarkeerd) &&
+						!vakjes[rij][kolom].isBom()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }

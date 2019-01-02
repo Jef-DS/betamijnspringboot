@@ -7,6 +7,7 @@ public interface Vakje {
 	boolean klik();
 	void markeer();
 	void toon();
+	boolean isBom();
 	void setBuren(Collection<Vakje> buren);
 	static Vakje MaakVakje(Bord speelbord, boolean heeftMijn) {
 		Vakje v;

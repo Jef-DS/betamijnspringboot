@@ -38,6 +38,10 @@ public class BordVakje implements Vakje {
 		}
 
 	}
+	@Override
+	public boolean isBom() {
+		return false;
+	}
 
 	@Override
 	public void toon() {
