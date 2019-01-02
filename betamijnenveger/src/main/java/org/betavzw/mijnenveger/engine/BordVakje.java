@@ -6,7 +6,9 @@ public class BordVakje implements Vakje {
 	public VeldToestandEnum getToestand() {
 		return toestand;
 	}
-
+	protected void setToestand(VeldToestandEnum toestand) {
+		this.toestand = toestand;
+	}
 	@Override
 	public boolean klik() {
 		// TODO Auto-generated method stub
