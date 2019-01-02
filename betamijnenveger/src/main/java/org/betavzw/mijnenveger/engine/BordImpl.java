@@ -4,10 +4,15 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BordImpl implements Bord {
 	private Vakje[][] vakjes;
 	private BordToestandEnum toestand = BordToestandEnum.gestart;
 
+	@Autowired
 	public BordImpl(VeldGenerator generator) {
 		vakjes = new Vakje[generator.getAantalRijen()][generator.getAantalKolommen()];
 		for (int rij = 0; rij < getAantalRijen(); rij++) {
