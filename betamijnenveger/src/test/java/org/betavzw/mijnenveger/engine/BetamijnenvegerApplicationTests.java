@@ -14,6 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class BetamijnenvegerApplicationTests {
 
 	@Test
+	public void testBeginToestandVeld() {
+		Vakje vakje = Vakje.MaakVakje(null, false);
+		assertEquals(VeldToestandEnum.start, vakje.getToestand());
+	}
+	@Test
 	public void testMaakGewoonVakje() {
 		Vakje  vakje = Vakje.MaakVakje(null, false);
 		boolean ontploft = vakje.klik();
@@ -25,6 +30,7 @@ public class BetamijnenvegerApplicationTests {
 		boolean ontploft = vakje.klik();
 		assertTrue(ontploft);
 	}
+
 
 }
 
