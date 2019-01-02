@@ -86,6 +86,24 @@ public class BetamijnenvegerApplicationTests {
 		vakje.klik();
 	}
 	@Test
+	public void testToonBordVakje() {
+		Vakje vakje = new BordVakje();
+		vakje.setBuren(List.of(
+			     new BordVakje(),
+			     new BomVakje(),
+			     new BordVakje(),
+			     new BomVakje(),
+			     new BomVakje()
+			));
+		vakje.toon();
+		assertEquals(VeldToestandEnum.drieburen, vakje.getToestand());
+	}
+	@Test
+	public void testToonBomVakje() {
+		Vakje vakje = new BomVakje();
+		vakje.toon();
+	}
+	@Test
 	public void testVeldGeneratorTeGroteRij() {
 		int aantalrijen = 2;
 		int aantalkolommen = 2;

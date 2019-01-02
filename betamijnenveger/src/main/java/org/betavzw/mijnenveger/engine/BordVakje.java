@@ -17,7 +17,7 @@ public class BordVakje implements Vakje {
 	@Override
 	public boolean klik() {
 		if (getToestand() != VeldToestandEnum.start) throw new IllegalArgumentException("Toestand is " + getToestand());
-		setToestand(VeldToestandEnum.values()[2+aantalBomBuren]);
+		toon();
 		return false;
 	}
 
@@ -33,7 +33,7 @@ public class BordVakje implements Vakje {
 
 	@Override
 	public void toon() {
-		// TODO Auto-generated method stub
+		setToestand(VeldToestandEnum.values()[2+aantalBomBuren]);
 
 	}
 	@Override

@@ -4,7 +4,11 @@ public class BomVakje extends BordVakje {
 	@Override
 	public boolean klik() {
 		if (getToestand() != VeldToestandEnum.start) throw new IllegalArgumentException("Toestand: " + getToestand());
-		setToestand(VeldToestandEnum.mijn);
+		toon();
 		return true;
+	}
+	@Override
+	public void toon() {
+		setToestand(VeldToestandEnum.mijn);
 	}
 }
