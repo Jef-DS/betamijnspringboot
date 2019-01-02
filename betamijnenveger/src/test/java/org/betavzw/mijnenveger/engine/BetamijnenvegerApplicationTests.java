@@ -59,9 +59,18 @@ public class BetamijnenvegerApplicationTests {
 		VeldGenerator generator = new VasteVeldGenerator(aantalrijen, aantalkolommen, posities);
 		expectedEx.expect(IllegalArgumentException.class);
 		expectedEx.expectMessage("Rij 2 is groter dan 2");
-		generator.isBom(2, 2);
+		generator.isBom(2, 1);
 	}
-
+	@Test
+	public void testVeldGeneratorTeGroteKolom() {
+		int aantalrijen = 2;
+		int aantalkolommen = 2;
+		Set<Positie> posities = new HashSet<Positie>();
+		VeldGenerator generator = new VasteVeldGenerator(aantalrijen, aantalkolommen, posities);
+		expectedEx.expect(IllegalArgumentException.class);
+		expectedEx.expectMessage("Kolom 2 is groter dan 2");
+		generator.isBom(1, 2);
+	}
 
 }
 
