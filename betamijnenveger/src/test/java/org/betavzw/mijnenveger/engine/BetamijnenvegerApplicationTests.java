@@ -30,6 +30,12 @@ public class BetamijnenvegerApplicationTests {
 		boolean ontploft = vakje.klik();
 		assertTrue(ontploft);
 	}
+	@Test
+	public void testMarkeerVakje() {
+		Vakje vakje = Vakje.MaakVakje(null, false);
+		vakje.markeer();
+		assertEquals(VeldToestandEnum.gemarkeerd, vakje.getToestand());
+	}
 
 
 }

@@ -15,7 +15,7 @@ public class BordVakje implements Vakje {
 
 	@Override
 	public void markeer() {
-		// TODO Auto-generated method stub
+		toestand = VeldToestandEnum.gemarkeerd;
 
 	}
 
